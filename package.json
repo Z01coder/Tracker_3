@@ -1,0 +1,22 @@
+{
+  "name": "takt-tracker",
+  "version": "1.0.0",
+  "description": "«Такт» — командный трекер задач с канбан-доской и ролями (FL.ru №1634681, кейс 3)",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "better-sqlite3": "^12.4.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true
+  }
+}
