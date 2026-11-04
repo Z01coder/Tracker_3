@@ -16,7 +16,20 @@ const { requireAuth, requireAdmin } = require('../middleware');
 const { ROLES, trimmed } = require('../constants');
 
 const router = express.Router();
-router.use(requireAuth, requireAdmin); // весь файл — только админ
+
+// --- Исполнители для всех вошедших (нужно при создании/редактировании задач) ----
+// Минимальные данные: id и имя. Идёт ДО router.use(requireAdmin), поэтому
+// accessible программистам тоже.
+router.get('/assignees', requireAuth, (_req, res) => {
+  const users = db.prepare(
+    'SELECT id, display_name FROM users WHERE is_active = 1 ORDER BY display_name'
+  ).all();
+  res.json({
+    assignees: users.map(u => ({ id: u.id, displayName: u.display_name }))
+  });
+});
+
+router.use(requireAuth, requireAdmin); // ниже в файле — только админ
 
 /** Публичное представление пользователя — без хэша пароля. */
 function publicUser(u) {
