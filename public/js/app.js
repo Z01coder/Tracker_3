@@ -382,7 +382,10 @@ function bindBoard() {
     state.filters.priority = e.target.value;
     renderBoard();
   });
-  document.getElementById('flt-reset').addEventListener('click', () => goProject(state.projectId));
+  document.getElementById('flt-reset').addEventListener('click', () => {
+    state.filters = { assignee: '', priority: '', q: '' }; // обязательно очищаем состояние, иначе «сброс» ничего не сбрасывает
+    renderBoard();
+  });
   document.getElementById('btn-new-task').addEventListener('click', () => showTaskForm(null));
 
   // клики по карточкам и кнопкам перемещения
