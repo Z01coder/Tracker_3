@@ -52,6 +52,10 @@ const _db = require('./db');
 
 // --- API ----------------------------------------------------------------------
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/projects', require('./routes/projects'));
+app.use('/api/tasks', require('./routes/tasks'));
+app.use('/api/comments', require('./routes/comments'));
+app.use('/api/users', require('./routes/users'));
 
 // Неизвестные API-пути отвечают JSON-ошибкой, а не HTML-страницей
 app.use('/api', (req, res) => {
