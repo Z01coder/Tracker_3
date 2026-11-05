@@ -16,3 +16,8 @@ tmp/
 *.log
 .DS_Store
 Thumbs.db
+
+# Служебные материалы из info/ (в репозиторий не идут)
+info/agents.md
+info/ordscr3.jpg
+info/ordlink3.txt
